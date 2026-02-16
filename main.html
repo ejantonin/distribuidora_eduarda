@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribuidora Premium | Pedidos Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+         <div class="logo-container">
+        <img src="Logo.jpeg" alt="Logo Bebidas Premium" class="logo-img">
+    </div>
+
+        <div class="logo">Delivery </div> <span>Premium</span></div>
+        <p class="status">● Aberto agora</p>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+    </header>
+
+    <main class="container">
+        <h2 class="title">Nosso Catálogo</h2>
+        <div class="grid-produtos" id="vitrine">
+            <p>Carregando bebidas...</p>
+        </div>
+    </main>
+
+    <div class="cart-bar">
+        <div class="cart-details">
+            <div class="cart-summary">
+                <p>Itens selecionados:</p>
+                <ul id="lista-carrinho"></ul>
+            </div>
+            <div class="cart-total-area">
+                <span id="total-val">R$ 0,00</span>
+                <button class="btn-clear" onclick="limparCarrinho()">Limpar</button>
+            </div>
+        </div>
+        <button class="btn-whatsapp" onclick="sendToWhatsApp()">
+            Finalizar Pedido
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
