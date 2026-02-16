@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
 /* --- VARIÁVEIS E CONFIGURAÇÕES GERAIS --- */
 :root {
     --gold: #ffd700;
@@ -13,7 +14,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Google Sans", sans-serif;
 }
 
 body {
@@ -264,3 +265,4 @@ span {
     .logo { font-size: 14px; }
     header { height: auto; padding: 5px; }
 }
+
