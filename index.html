@@ -5,19 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Distribuidora Premium | Pedidos Online</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
-         <div class="logo-container">
-        <img src="Logo.jpeg" alt="Logo Bebidas Premium" class="logo-img">
-    </div>
-
-        <div class="logo">Delivery </div> <span>Premium</span></div>
+        <div class="logo-container">
+            <img src="Logo.jpeg" alt="Logo Bebidas Premium" class="logo-img">
+        </div>
+        <div class="logo">Delivery</div>
         <p class="status">● Aberto agora</p>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
     </header>
 
     <main class="container">
@@ -28,21 +25,33 @@
     </main>
 
     <div class="cart-bar">
-        <div class="cart-details">
+        <div class="cart-header-toggle" onclick="toggleCartList()" style="background: #222; padding: 5px; text-align: center; cursor: pointer; color: #ffd700; font-size: 0.8em; border-bottom: 1px solid #444;">
+            Itens no carrinho <span id="cart-icon">▼</span>
+        </div>
+
+        <div class="cart-details" id="cart-details-area">
             <div class="cart-summary">
-                <p>Itens selecionados:</p>
                 <ul id="lista-carrinho"></ul>
             </div>
-            <div class="cart-total-area">
-                <span id="total-val">R$ 0,00</span>
-                <button class="btn-clear" onclick="limparCarrinho()">Limpar</button>
+            
+            <div class="pagamento-container" style="margin: 10px 0; padding: 10px; border-top: 1px solid #444;">
+                <label for="metodo-pagamento" style="color: #ffd700; display: block; margin-bottom: 5px; font-size: 0.9em;">Forma de Pagamento:</label>
+                <select id="metodo-pagamento" style="width: 100%; padding: 8px; border-radius: 5px; background: #222; color: #fff; border: 1px solid #ffd700; cursor: pointer;">
+                    <option value="" disabled selected>Escolha como pagar...</option> <option value="Pix">Pix</option>
+                    <option value="Cartão (Maquininha)">Cartão (Maquininha)</option>
+                    <option value="Dinheiro">Dinheiro</option>
+                </select>
             </div>
         </div>
-        <button class="btn-whatsapp" onclick="sendToWhatsApp()">
-            Finalizar Pedido
-        </button>
-    </div>
 
+        <div class="cart-total-area" style="display: flex; justify-content: space-around; align-items: center; padding: 10px;">
+            <span id="total-val" style="font-weight: bold; color: #ffd700;">R$ 0,00</span>
+            <button class="btn-clear" onclick="limparCarrinho()" style="background: transparent; border: 1px solid #ff4444; color: #ff4444; padding: 5px 10px; border-radius: 4px; cursor: pointer;">Limpar</button>
+            <button class="btn-whatsapp" onclick="sendToWhatsApp()" style="background: #25d366; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer;">
+                Finalizar
+            </button>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
