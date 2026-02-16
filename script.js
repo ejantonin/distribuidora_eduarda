@@ -102,14 +102,31 @@ function sendToWhatsApp() {
         return;
     }
 
-    const myPhone = "554195327341"; // Substitua pelo seu telefone
+    // Captura o método de pagamento
+    const metodoPagamento = document.getElementById('metodo-pagamento').value;
+
+    // VERIFICAÇÃO DE OBRIGATORIEDADE
+    if (metodoPagamento === "") {
+        alert("Por favor, selecione uma forma de pagamento antes de finalizar!");
+        
+        // Opcional: Abre a lista do carrinho caso ela esteja minimizada para o usuário ver o erro
+        const details = document.getElementById('cart-details-area');
+        if (details.classList.contains('cart-minimized')) {
+            toggleCartList(); 
+        }
+        
+        return; // Interrompe o envio
+    }
+
+    const myPhone = "554195327341"; 
     let message = "*--- NOVO PEDIDO ---*\n\n";
     
     cart.forEach((item, i) => {
-        message += `*${i+1}.* ${item.name} - R$ ${item.price.toFixed(2)}\n`;
+        message += `*${i+1}.* ${item.name} - R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
     });
     
     message += `\n*TOTAL: R$ ${total.toFixed(2).replace('.', ',')}*`;
+    message += `\n*PAGAMENTO:* ${metodoPagamento}`;
     message += `\n\n_Pedido gerado pelo site._`;
 
     const url = `https://wa.me/${myPhone}?text=${encodeURIComponent(message)}`;
@@ -118,3 +135,17 @@ function sendToWhatsApp() {
 
 // Inicializa a vitrine ao carregar o arquivo
 fetchProducts();
+
+function toggleCartList() {
+    const details = document.getElementById('cart-details-area');
+    const icon = document.getElementById('cart-icon');
+    
+    details.classList.toggle('cart-minimized');
+    
+    // Altera a setinha
+    if (details.classList.contains('cart-minimized')) {
+        icon.innerText = '▲';
+    } else {
+        icon.innerText = '▼';
+    }
+}
