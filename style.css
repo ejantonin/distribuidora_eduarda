@@ -1,15 +1,4 @@
-*{
-    font-family: "Google Sans", sans-serif;
-
-}
-body {
-    background-color: var(--dark-bg);
-    color: var(--text);
-    padding-bottom: 180px;
-}
-
-
-/* Variáveis de Cores */
+/* --- VARIÁVEIS E CONFIGURAÇÕES GERAIS --- */
 :root {
     --gold: #ffd700;
     --dark-bg: #121212;
@@ -20,42 +9,81 @@ body {
     --success: #25d366;
 }
 
-/* Reset Geral */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
 }
 
 body {
     background-color: var(--dark-bg);
     color: var(--text);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding-bottom: 180px; /* Espaço para o carrinho fixo */
+    padding-bottom: 120px; /* Reduzido para não sobrar tanto espaço */
 }
 
-/* Header */
+/* --- HEADER COMPACTO --- */
 header {
     background: #000;
-    padding: 20px;
+    padding: 10px 20px;
     text-align: center;
     border-bottom: 1px solid #333;
     position: sticky;
     top: 0;
     z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.logo { font-size: 24px; font-weight: bold; text-transform: uppercase; }
-.logo span { color: var(--gold); }
-.status { color: var(--success); font-size: 12px; margin-top: 5px; }
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2px;
+}
 
-/* Grid de Produtos */
-.container { padding: 20px; max-width: 1100px; margin: 0 auto; }
-.title { margin-bottom: 20px; font-weight: 400; color: var(--text-muted); }
+.logo-img {
+    height: 60px; /* Reduzido conforme solicitado */
+    width: auto;
+    object-fit: contain;
+}
+
+.logo { 
+    font-size: 16px; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+}
+
+span { 
+    color: var(--gold); 
+    font-size: 18px; /* Ajustado para harmonia do novo header */
+}
+
+.status { 
+    color: var(--success); 
+    font-size: 10px; 
+    margin-top: 2px; 
+}
+
+/* --- GRID E PRODUTOS --- */
+.container { 
+    padding: 20px; 
+    max-width: 1100px; 
+    margin: 0 auto; 
+}
+
+.title { 
+    margin-bottom: 20px; 
+    font-weight: 400; 
+    color: var(--text-muted); 
+    font-size: 1.1rem;
+}
 
 .grid-produtos {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 colunas no celular */
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
 }
 
@@ -63,7 +91,7 @@ header {
     .grid-produtos { grid-template-columns: repeat(4, 1fr); }
 }
 
-/* Cards */
+/* --- CARDS --- */
 .card {
     background: var(--surface);
     border-radius: 12px;
@@ -74,11 +102,33 @@ header {
     flex-direction: column;
 }
 
-.img-box { height: 120px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
-.img-box img { max-height: 100%; max-width: 100%; object-fit: contain; }
+.img-box { 
+    height: 120px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin-bottom: 10px; 
+}
 
-.card h3 { font-size: 0.9rem; height: 40px; overflow: hidden; margin-bottom: 10px; }
-.price { color: var(--gold); font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; }
+.img-box img { 
+    max-height: 100%; 
+    max-width: 100%; 
+    object-fit: contain; 
+}
+
+.card h3 { 
+    font-size: 0.9rem; 
+    height: 40px; 
+    overflow: hidden; 
+    margin-bottom: 10px; 
+}
+
+.price { 
+    color: var(--gold); 
+    font-size: 1.1rem; 
+    font-weight: bold; 
+    margin-bottom: 15px; 
+}
 
 .btn-add {
     background: var(--gold);
@@ -93,7 +143,7 @@ header {
 
 .btn-add:active { transform: scale(0.95); }
 
-/* BARRA DE CARRINHO FIXA */
+/* --- BARRA DE CARRINHO (SISTEMA MINIMIZÁVEL) --- */
 .cart-bar {
     position: fixed;
     bottom: 0;
@@ -101,18 +151,39 @@ header {
     right: 0;
     background: #1a1a1a;
     border-top: 3px solid var(--gold);
-    padding: 15px 20px;
     z-index: 2000;
     box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
 }
 
-.cart-details { margin-bottom: 15px; }
+/* Área de clique para abrir/fechar */
+.cart-header-toggle {
+    background: #222;
+    padding: 8px;
+    text-align: center;
+    cursor: pointer;
+    color: var(--gold);
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-bottom: 1px solid #333;
+}
+
+/* Área que encolhe e estica */
+#cart-details-area {
+    max-height: 300px; /* Altura máxima quando aberto */
+    overflow-y: auto;
+    transition: max-height 0.4s ease-in-out, padding 0.3s;
+    padding: 10px 20px;
+}
+
+/* Classe aplicada pelo JS para esconder a lista */
+.cart-minimized {
+    max-height: 0 !important;
+    padding: 0 20px !important;
+    overflow: hidden;
+}
 
 #lista-carrinho {
-    max-height: 80px;
-    overflow-y: auto;
     list-style: none;
-    margin-bottom: 10px;
 }
 
 #lista-carrinho li {
@@ -135,14 +206,20 @@ header {
     padding: 0 5px;
 }
 
+/* Área do Total e Botão Finalizar (Sempre Visíveis) */
 .cart-total-area {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    padding: 15px 20px;
+    background: #1a1a1a;
 }
 
-#total-val { font-size: 1.6rem; font-weight: bold; color: var(--gold); }
+#total-val { 
+    font-size: 1.4rem; 
+    font-weight: bold; 
+    color: var(--gold); 
+}
 
 .btn-clear {
     background: none;
@@ -151,48 +228,39 @@ header {
     padding: 5px 12px;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 0.8rem;
 }
 
 .btn-whatsapp {
     background: var(--success);
     color: #fff;
     border: none;
-    width: 100%;
-    padding: 15px;
-    border-radius: 10px;
+    padding: 12px 20px;
+    border-radius: 8px;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1rem;
     cursor: pointer;
+    transition: 0.3s;
 }
 
-/* Container da Logo para garantir o alinhamento */
-.logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.btn-whatsapp:hover {
+    background: #1eb954;
 }
 
-/* Estilização da imagem da logo */
-.logo-img {
-    height: 150px; /* Ajuste a altura conforme necessário */
-    width: auto;  /* Mantém a proporção da largura */
-    object-fit: contain;
-    transition: transform 0.3s ease;
+/* Pagamento */
+.pagamento-container select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    background: #252525;
+    color: white;
+    border: 1px solid var(--gold);
+    border-radius: 5px;
 }
 
-/* Efeito sutil ao passar o mouse (opcional) */
-.logo-img:hover {
-    transform: scale(1.05);
-}
-
-/* Ajuste para telas menores (celular) */
+/* --- AJUSTE CELULAR --- */
 @media (max-width: 480px) {
-    .logo-img {
-        height: 48px; /* Logo um pouco menor no celular */
-    }
-}
-/*mudar cor paravra premium*/
-span{
-    color: #ffd700;
-    font-size: 20px;
+    .logo-img { height: 45px; }
+    .logo { font-size: 14px; }
+    header { height: auto; padding: 5px; }
 }
